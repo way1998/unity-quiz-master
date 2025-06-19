@@ -1044,10 +1044,10 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 0.36320752, g: 0.47299585, b: 1, a: 1}
-    topRight: {r: 0.36320752, g: 0.47299585, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.36320752, g: 0.47299585, b: 1, a: 0.8}
+    topRight: {r: 0.36320752, g: 0.47299585, b: 1, a: 0.8}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 0.8}
+    bottomRight: {r: 1, g: 1, b: 1, a: 0.8}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 1894284447}
   - component: {fileID: 1894284446}
   - component: {fileID: 1894284445}
+  - component: {fileID: 1894284449}
   m_Layer: 5
   m_Name: QuizCanvas
   m_TagString: Untagged
@@ -1312,6 +1313,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1894284449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894284444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6697b0280b450b146a04fc01244a5051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 1254101889}
+  question: {fileID: 11400000, guid: 1e0124132b9107946b0822d8e34b5183, type: 2}
 --- !u!1 &2040168897
 GameObject:
   m_ObjectHideFlags: 0
