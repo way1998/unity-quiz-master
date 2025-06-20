@@ -52,7 +52,5 @@ public class Timer : MonoBehaviour
                 loadNextQuestion = true;
             }
         }
-
-        // Debug.Log(timerValue);
     }
 }

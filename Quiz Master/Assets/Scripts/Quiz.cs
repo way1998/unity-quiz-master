@@ -24,9 +24,21 @@ public class Quiz : MonoBehaviour
     [SerializeField] Image timerImage;
     Timer timer;
 
+    [Header("Scoring")]
+    [SerializeField] TextMeshProUGUI scoreText;
+    ScoreKeeper scoreKeeper;
+
+    [Header("Progress Bar")]
+    [SerializeField] Slider progressBar;
+
+    public bool isComplete;
+
     void Start()
     {
         timer = FindObjectOfType<Timer>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        progressBar.maxValue = questions.Count;
+        progressBar.value = 0;
     }
 
     void Update()
@@ -42,6 +54,8 @@ public class Quiz : MonoBehaviour
         {
             DisplayAnswer(-1);
             SetButtonState(false);
+            UpdateScoreText();
+            UpdateCompleteStatus();
         }
     }
 
@@ -60,11 +74,13 @@ public class Quiz : MonoBehaviour
     void GetNextQuestion()
     {
         if (questions.Count > 0)
-        { 
+        {
             SetButtonState(true);
             SetDefaultButtonSprites();
             GetRandomQuestion();
-            DisplayQuestion();            
+            DisplayQuestion();
+            InrementProgressBar();
+            scoreKeeper.InrementQuestionsSeen();
         }
     }
 
@@ -74,7 +90,7 @@ public class Quiz : MonoBehaviour
         currentQuestion = questions[index];
 
         if (questions.Contains(currentQuestion))
-        { 
+        {
             questions.Remove(currentQuestion);
         }
     }
@@ -85,6 +101,8 @@ public class Quiz : MonoBehaviour
         DisplayAnswer(index);
         SetButtonState(false);
         timer.CancelTimer();
+        UpdateScoreText();
+        UpdateCompleteStatus();
     }
 
     void DisplayAnswer(int index)
@@ -95,6 +113,7 @@ public class Quiz : MonoBehaviour
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.InrementCorrectAnswers();
         }
         else
         {
@@ -106,7 +125,7 @@ public class Quiz : MonoBehaviour
         }
     }
 
-  void SetButtonState(bool state)
+    void SetButtonState(bool state)
     {
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -121,6 +140,23 @@ public class Quiz : MonoBehaviour
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
             buttonImage.sprite = defaultAnswerSprite;
+        }
+    }
+
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
+    }
+
+    void InrementProgressBar()
+    {
+        progressBar.value++;
+    }
+
+    void UpdateCompleteStatus() {
+        if (progressBar.value == progressBar.maxValue)
+        {
+            isComplete = true;
         }
     }
 }
