@@ -29,6 +29,8 @@ public class ScoreKeeper : MonoBehaviour
 
     public int CalculateScore()
     {
+        Debug.Log("correct answers: " + correctAnswers);
+        Debug.Log("questions seen: " + questionsSeen);
         return Mathf.RoundToInt(correctAnswers / (float)questionsSeen * 100);
     }
 }

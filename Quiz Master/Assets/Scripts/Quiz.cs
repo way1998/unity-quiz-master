@@ -33,7 +33,7 @@ public class Quiz : MonoBehaviour
 
     public bool isComplete;
 
-    void Start()
+    void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -46,6 +46,7 @@ public class Quiz : MonoBehaviour
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
+            UpdateCompleteStatus();
             hasAnsweredEarly = false;
             GetNextQuestion();
             timer.loadNextQuestion = false;
@@ -55,7 +56,6 @@ public class Quiz : MonoBehaviour
             DisplayAnswer(-1);
             SetButtonState(false);
             UpdateScoreText();
-            UpdateCompleteStatus();
         }
     }
 
@@ -102,7 +102,6 @@ public class Quiz : MonoBehaviour
         SetButtonState(false);
         timer.CancelTimer();
         UpdateScoreText();
-        UpdateCompleteStatus();
     }
 
     void DisplayAnswer(int index)

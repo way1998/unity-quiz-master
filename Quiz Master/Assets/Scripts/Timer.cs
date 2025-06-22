@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] float timeToCompleteQuestion = 30f;
-    [SerializeField] float timeToShowCorrectAnswer = 10f;
+    [SerializeField] float timeToCompleteQuestion = 10f;
+    [SerializeField] float timeToShowCorrectAnswer = 5f;
 
-    public bool loadNextQuestion;
+    public bool loadNextQuestion = true;
     public bool isAnsweringQuestion;
     public float fillFraction;
     float timerValue;
 
     void Update()
     {
-        updateTimer();
+        UpdateTimer();
     }
 
     public void CancelTimer()
@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         timerValue = 0;
     }
 
-    void updateTimer()
+    void UpdateTimer()
     {
         timerValue -= Time.deltaTime;
 
