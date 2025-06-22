@@ -911,8 +911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86d6306694ba0544bcdb152a69b7d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCompleteQuestion: 5
-  timeToShowCorrectAnswer: 1
+  timeToCompleteQuestion: 10
+  timeToShowCorrectAnswer: 5
   loadNextQuestion: 0
   isAnsweringQuestion: 0
   fillFraction: 0
